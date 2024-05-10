@@ -1,0 +1,51 @@
+<div class="bg-light dark:bg-transparent min-vh-100 d-flex flex-row align-items-center">
+  <c-container>
+    <c-row class="justify-content-center">
+      <c-col lg="7" md="9" xl="6">
+        <c-card class="mx-4">
+          <c-card-body class="p-4">
+            <form cForm>
+              <h1>Register</h1>
+              <p class="text-body-secondary">Create your account</p>
+              <c-input-group class="mb-3">
+                <span cInputGroupText>
+                  <svg cIcon name="cilUser"></svg>
+                </span>
+                <input autoComplete="firstname" cFormControl placeholder="Firstname" [(ngModel)]="registerObj.firstname" name="firstname" />
+              </c-input-group>
+              <c-input-group class="mb-3">
+                <span cInputGroupText>
+                  <svg cIcon name="cilUser"></svg>
+                </span>
+                <input autoComplete="lastname" cFormControl placeholder="Lastname"  [(ngModel)]="registerObj.lastname" name="lastname"/>
+              </c-input-group>
+              <c-input-group class="mb-3">
+                <span cInputGroupText>&#64;</span>
+                <input autoComplete="email" cFormControl placeholder="Email" [(ngModel)]="registerObj.email" name="email" />
+              </c-input-group>
+              <c-input-group class="mb-3">
+                <span cInputGroupText>
+                  <svg cIcon name="cilUser"></svg>
+                </span>
+                <input autoComplete="phone" cFormControl placeholder="Phone Number" [(ngModel)]="registerObj.phone" name="phone" />
+              </c-input-group>
+              <c-input-group class="mb-3">
+                <span cInputGroupText>&#64;</span>
+                <input autoComplete="role" cFormControl placeholder="Role" [(ngModel)]="registerObj.role" name="role" />
+              </c-input-group>
+              <c-input-group class="mb-3">
+                <span cInputGroupText>
+                  <svg cIcon name="cilLockLocked"></svg>
+                </span>
+                <input autoComplete="password" cFormControl placeholder="Password" type="password" [(ngModel)]="registerObj.password" name="password" />
+              </c-input-group>
+              <div class="d-grid">
+                <button cButton color="success" (click)="onRegister()">Create Account</button>
+              </div>
+            </form>
+          </c-card-body>
+        </c-card>
+      </c-col>
+    </c-row>
+  </c-container>
+</div>

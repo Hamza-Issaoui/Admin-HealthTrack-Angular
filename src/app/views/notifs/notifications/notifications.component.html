@@ -1,0 +1,32 @@
+<main class="main">
+   <div class="d-flex justify-content-center mt-3">
+    <div class="container">
+    <h2>Notifications List</h2>
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Description</th>
+          <th>Action</th>
+        </tr>
+      </thead>
+      <tbody>
+        @for (notif of notifs; track notif.id) {
+        <tr>
+          <td>{{ notif.name }}</td>
+          <td>{{ notif.description }}</td>
+          <td>
+            <i class="fa-solid fa-eye" (click)="navigate(notif._id, 'View')"></i>
+            <i class="fa-regular fa-pen-to-square" style="cursor: pointer;" (click)="navigate(notif._id, 'Edit')"></i>
+            <i class="fa-solid fa-trash" style="cursor: pointer;" (click)="confirmDelete(notif)"></i>
+          </td>
+        </tr>
+        }
+      </tbody>
+    </table> <br> <br> <br>
+    <div class="text-end">
+      <input data-mdb-button-init data-mdb-ripple-init class="btn btn-primary btn-lg" type="submit" value="Create" (click)="goToCreateNotif()" />
+  </div>
+  </div>
+</div>
+</main>

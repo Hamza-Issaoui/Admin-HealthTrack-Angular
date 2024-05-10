@@ -1,0 +1,36 @@
+<main class="main">
+   <div class="d-flex justify-content-center mt-3">
+    <div class="container">
+    <h2>Users List</h2>
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th>Firstname</th>
+          <th>Lastname</th>
+          <th>Email</th>
+          <th>Phone Number</th>
+          <th>Action</th>
+        </tr>
+      </thead>
+      <tbody>
+        @for (user of users; track user.id) {
+        <tr>
+          <td>{{ user.firstname }}</td>
+          <td>{{ user.lastname }}</td>
+          <td>{{ user.email }}</td>
+          <td>{{ user.phone }}</td>
+          <td>
+            <i class="fa-solid fa-eye" (click)="navigate(user._id, 'View')"></i>
+            <i class="fa-regular fa-pen-to-square" style="cursor: pointer;" (click)="navigate(user._id, 'Edit')"></i>
+            <i class="fa-solid fa-trash" style="cursor: pointer;" (click)="confirmDelete(user)"></i>
+          </td>
+        </tr>
+        }
+      </tbody>
+    </table> <br> <br> <br>
+    <div class="text-end">
+      <input data-mdb-button-init data-mdb-ripple-init class="btn btn-primary btn-lg" type="submit" value="Create" (click)="goToCreateUser()" />
+  </div>
+  </div>
+</div>
+</main>
