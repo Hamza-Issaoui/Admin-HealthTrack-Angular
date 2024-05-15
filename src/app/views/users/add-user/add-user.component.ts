@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import Swal from 'sweetalert2';
-import { AuthService } from '../../../shared/auth.service';
+import { AuthService } from '../../../shared/authGuard/auth.service';
 import { Router } from '@angular/router';
 import { AddUser } from './add-user.interface';
 import { FormsModule } from '@angular/forms';

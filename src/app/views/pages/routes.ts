@@ -28,5 +28,19 @@ export const routes: Routes = [
     data: {
       title: 'Register Page'
     }
+  },
+  {
+    path: 'forgot-pass',
+    loadComponent: () => import('./forgot-password/forgot-pass.component').then(m => m.ForgotPasswordComponent),
+    data: {
+      title: 'Forgot-Password Page'
+    }
+  },
+  {
+    path: 'reset-pass',
+    loadComponent: () => import('./reset-pass/reset-pass.component').then(m => m.ResetPasswordComponent),
+    data: {
+      title: 'Reset-Password Page'
+    }
   }
 ];

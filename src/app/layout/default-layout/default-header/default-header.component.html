@@ -24,7 +24,7 @@
 
     <c-header-nav class="d-none d-md-flex ms-auto ">
       <a cNavLink>
-        <svg cIcon class="my-1" name="cilBell" size="lg"></svg>
+        <svg cIcon class="my-1" name="cilBell" size="lg" (click)="showNotifications = !showNotifications"></svg>
       </a>
       <a cNavLink>
         <svg cIcon class="my-1" name="cilList" size="lg"></svg>
@@ -33,7 +33,12 @@
         <svg cIcon class="my-1" name="cilEnvelopeOpen" size="lg"></svg>
       </a>
     </c-header-nav>
-
+    <div *ngIf="showNotifications" class="notifications">
+      <!-- Iterate over newNotifications and display notification content -->
+      <div *ngFor="let notification of newNotifications" class="notification">
+        <span>{{ notification.title }}</span>
+      </div>
+    </div>
     <c-header-nav class="ms-auto ms-md-0">
       <div class="nav-item py-1">
         <div class="vr h-100 mx-2 text-body text-opacity-75"></div>

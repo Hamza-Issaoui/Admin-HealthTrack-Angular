@@ -18,12 +18,14 @@ import Swal from 'sweetalert2';
 
 export class NotificationsComponent implements OnInit {
   notifs: any[] = [];
+
   constructor(
     private router: Router,
     private notifService: NotificationService,
   ) { }
   ngOnInit(): void {
     this.fetchNotifs();
+   // this.subscribeToRealTimeNotifications();
   }
 
   fetchNotifs(): void {
@@ -31,13 +33,23 @@ export class NotificationsComponent implements OnInit {
       (data: any) => {
         this.notifs = data.notifs;
         console.log("notifs", this.notifs);
-        
       },
       (error) => {
         console.error('Error fetching users:', error);
       }
     );
   }
+
+  // subscribeToRealTimeNotifications(): void {
+  //   this.notifService.getRealTimeNotifications().subscribe(
+  //     (notification: any) => {
+  //       this.notifs.push(notification); // Add real-time notification to the list
+  //     },
+  //     (error) => {
+  //       console.error('Error receiving real-time notification:', error);
+  //     }
+  //   );
+  // }
 
   confirmDelete(notif: any): void {
     const swalWithBootstrapButtons = Swal.mixin({

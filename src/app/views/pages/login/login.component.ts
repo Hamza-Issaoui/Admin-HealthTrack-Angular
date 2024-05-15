@@ -3,20 +3,20 @@ import { NgStyle } from '@angular/common';
 import { IconDirective } from '@coreui/icons-angular';
 import { ContainerComponent, RowComponent, ColComponent, CardGroupComponent, TextColorDirective, CardComponent, CardBodyComponent, FormDirective, InputGroupComponent, InputGroupTextDirective, FormControlDirective, ButtonDirective } from '@coreui/angular';
 import { Login } from './login.interface';
-import { AuthService } from '../../../shared/auth.service';
+import { AuthService } from '../../../shared/authGuard/auth.service';
 import Swal from 'sweetalert2';
 import { Router } from '@angular/router';
 import { FormsModule } from '@angular/forms';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 
 @Component({
-    selector: 'app-login',
-    templateUrl: './login.component.html',
-    styleUrls: ['./login.component.scss'],
-    standalone: true,
-    imports: [FormsModule, HttpClientModule, ContainerComponent, RowComponent, ColComponent, CardGroupComponent, TextColorDirective, CardComponent, CardBodyComponent, FormDirective, InputGroupComponent, InputGroupTextDirective, IconDirective, FormControlDirective, ButtonDirective, NgStyle],
-    providers: [HttpClient]
-  })
+  selector: 'app-login',
+  templateUrl: './login.component.html',
+  styleUrls: ['./login.component.scss'],
+  standalone: true,
+  imports: [FormsModule, HttpClientModule, ContainerComponent, RowComponent, ColComponent, CardGroupComponent, TextColorDirective, CardComponent, CardBodyComponent, FormDirective, InputGroupComponent, InputGroupTextDirective, IconDirective, FormControlDirective, ButtonDirective, NgStyle],
+  providers: [HttpClient, AuthService]
+})
 export class LoginComponent {
 
   loginObj: Login;
@@ -58,6 +58,10 @@ export class LoginComponent {
 
   goToRegister(): void {
     this.router.navigate(['/register']);
+  }
+
+  goToForgoPass(): void {
+    this.router.navigate(['/forgot-pass']);
   }
 
 }

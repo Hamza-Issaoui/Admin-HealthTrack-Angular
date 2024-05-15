@@ -3,10 +3,10 @@ import { IconDirective } from '@coreui/icons-angular';
 import { ContainerComponent, RowComponent, ColComponent, TextColorDirective, CardComponent, CardBodyComponent, FormDirective, InputGroupComponent, InputGroupTextDirective, FormControlDirective, ButtonDirective } from '@coreui/angular';
 import Swal from 'sweetalert2';
 import { Router } from '@angular/router';
-import { AuthService } from 'src/app/shared/auth.service';
 import { Register } from './register.interface';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
+import { AuthService } from 'src/app/shared/authGuard/auth.service';
 
 
 @Component({

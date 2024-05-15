@@ -1,6 +1,7 @@
 import { Routes } from '@angular/router';
 import { DefaultLayoutComponent } from './layout';
-import { AuthGuard } from './shared/authGard';
+import { AuthGuard } from './shared/authGuard/authGard';
+
 
 export const routes: Routes = [
   {
@@ -89,6 +90,20 @@ export const routes: Routes = [
     loadComponent: () => import('./views/pages/register/register.component').then(m => m.RegisterComponent),
     data: {
       title: 'Register Page'
+    }
+  },
+  {
+    path: 'forgot-pass',
+    loadComponent: () => import('./views/pages//forgot-password/forgot-pass.component').then(m => m.ForgotPasswordComponent),
+    data: {
+      title: 'Forgot-Password Page'
+    }
+  },
+  {
+    path: 'reset-pass',
+    loadComponent: () => import('./views/pages//reset-pass/reset-pass.component').then(m => m.ResetPasswordComponent),
+    data: {
+      title: 'Reset-Password Page'
     }
   },
   { path: '**', redirectTo: 'dashboard' }
