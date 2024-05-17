@@ -40,16 +40,7 @@ export class NotificationsComponent implements OnInit {
     );
   }
 
-  // subscribeToRealTimeNotifications(): void {
-  //   this.notifService.getRealTimeNotifications().subscribe(
-  //     (notification: any) => {
-  //       this.notifs.push(notification); // Add real-time notification to the list
-  //     },
-  //     (error) => {
-  //       console.error('Error receiving real-time notification:', error);
-  //     }
-  //   );
-  // }
+
 
   confirmDelete(notif: any): void {
     const swalWithBootstrapButtons = Swal.mixin({

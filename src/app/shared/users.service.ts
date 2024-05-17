@@ -10,22 +10,22 @@ export class UserService {
   constructor(private _httpClient: HttpClient) { }
 
   getOneUser(id: string) {
-    const url = `${this.path}/users/id/${id}`
+    const url = `${this.path}/users/${id}`
     return this._httpClient.get(url)
   }
 
   getAllUsers(): Observable<any> {
-    const url = `${this.path}/users/getall`
+    const url = `${this.path}/users`
     return this._httpClient.get(url)
   }
 
   updateUser(id: string, userData: any) {
-    const url = `${this.path}/users/update/${id}`
+    const url = `${this.path}/users/${id}`
     return this._httpClient.patch(url, userData)
   }
 
   deleteUser(id: string): Observable<any> {
-    const url = `${this.path}/users/delete/${id}`
+    const url = `${this.path}/users/${id}`
     return this._httpClient.delete(url)
   }
 

@@ -11,7 +11,7 @@ import {AuthUtils} from './authUtils'
 export class AuthService {
     private path = env.envUrl
      authToken: any | undefined;
-    private _authenticated: boolean = false;
+    private _authenticated: boolean = false;
 
     constructor(private _httpClient: HttpClient) { }
 
@@ -68,21 +68,16 @@ check(): Observable<boolean> {
   if (this._authenticated) {
     return of(true);
   }
-  console.log("authenticated111", this._authenticated);
-
-  console.log("authenticated00000", this.authToken);
-
+ 
   // Check the access token availability
   if (!this.authToken) {
     return of(false);
   }
-  console.log("authenticated222", this._authenticated);
 
   // Check the access token expire date
   if (AuthUtils.isTokenExpired(this.authToken)) {
     return of(false);
   }
-  console.log("authenticated3333", this._authenticated);
 
   // If the access token exists, and it didn't expire, sign in using it
   return this.signInUsingToken();
@@ -109,19 +104,13 @@ signInUsingToken(): Observable<any> {
   // sessionStorage.setItem('userProfile', user.profiles[0]?.title)
   // sessionStorage.setItem('profileId', user.profiles[0]?.id)
 
-  console.log("authenticatedBefore", this._authenticated);
-
   // Set the authenticated flag to true
   this._authenticated = true
-  console.log("authenticatedAfter", this._authenticated);
 
   // Store the user on the user service
   //this._userService.user = user
 
   // Return true
-  return of(true)
-  }
-
-
-
+  return of(true)
+  }
 }

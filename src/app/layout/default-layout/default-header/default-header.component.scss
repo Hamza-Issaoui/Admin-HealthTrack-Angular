@@ -1,0 +1,63 @@
+.notification-bell {
+    position: relative;
+    cursor: pointer;
+  }
+  
+  .notification-bell .badge {
+    position: absolute;
+    top: -8px; /* Ajustement vertical */
+    right: -8px; /* Ajustement horizontal */
+    background-color: red;
+    color: white;
+    border-radius: 50%;
+    padding: 4px 8px; /* Ajustement du rembourrage */
+    font-size: 12px; /* Taille de police légèrement réduite */
+  }
+  
+  .notification-list {
+    position: absolute;
+    top: 48px; /* Ajustement de la position verticale */
+    right: 0;
+    background-color: #fff;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    z-index: 1000;
+    width: 320px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    overflow: hidden;
+  }
+  
+  .notification-item {
+    padding: 15px;
+    border-bottom: 1px solid #f0f0f0;
+  }
+  
+  .notification-item:last-child {
+    border-bottom: none;
+  }
+  
+  .notification-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  .notification-name {
+    font-weight: bold;
+  }
+  
+  .notification-time {
+    color: #999;
+    font-size: 12px;
+  }
+  
+  .notification-description {
+    margin-top: 8px; /* Espacement entre le nom et la description */
+    color: #333;
+  }
+ 
+  
+  .notification-bell.show-notifications .badge {
+    display: inline-block;
+  }
+  

@@ -1,6 +1,5 @@
 import { Component, computed, DestroyRef, inject, Input, OnInit } from '@angular/core';
 import { Router, RouterLink, RouterLinkActive } from '@angular/router';
-import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { AvatarComponent, BadgeComponent, BreadcrumbRouterComponent, ColorModeService, ContainerComponent, DropdownComponent, DropdownDividerDirective, DropdownHeaderDirective, DropdownItemDirective, DropdownMenuDirective, DropdownToggleDirective, HeaderComponent, HeaderNavComponent, HeaderTogglerDirective, NavItemComponent, NavLinkDirective, ProgressBarDirective, ProgressComponent, SidebarToggleDirective, TextColorDirective, ThemeDirective } from '@coreui/angular';
 import { NgStyle, NgTemplateOutlet } from '@angular/common';
 import { IconDirective } from '@coreui/icons-angular';
@@ -18,7 +17,6 @@ import { AuthService } from 'src/app/shared/authGuard/auth.service';
 export class DefaultHeaderComponent extends HeaderComponent implements OnInit {
 
 
-  readonly #destroyRef: DestroyRef = inject(DestroyRef);
   readonly #colorModeService = inject(ColorModeService);
   readonly colorMode = this.#colorModeService.colorMode;
 
@@ -33,10 +31,13 @@ export class DefaultHeaderComponent extends HeaderComponent implements OnInit {
     return this.colorModes.find(mode => mode.name === currentMode)?.icon ?? 'cilSun';
   });
 
-  public newNotifications: any[] = [];
+  public notifications: any[] = [];
   public showNotifications: boolean = false;
 
   @Input() sidebarId: string = 'sidebar1';
+
+  pageSize: number = 5; // Nombre de notifications par page
+  currentPage: number = 1; // Page actuelle
 
   constructor(
     private router: Router,
@@ -48,8 +49,7 @@ export class DefaultHeaderComponent extends HeaderComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    console.log("ngOnInit");
-
+   
     // Subscribe to real-time notifications
     //  const notif = this.webSocketService.listenToNotification()
     //  console.log( notif, 'notiiiiiiif');
@@ -57,9 +57,8 @@ export class DefaultHeaderComponent extends HeaderComponent implements OnInit {
     //  console.log( notif1, 'notiiiiiiif1111');
 
     this.webSocketService.listenToNotification().subscribe(
-      (notifications: any[]) => {
-        this.newNotifications = notifications;
-        console.log("notifications", notifications);
+      (notification: any[]) => {
+        this.notifications.push(notification);
 
       },
       (error) => {
@@ -68,6 +67,11 @@ export class DefaultHeaderComponent extends HeaderComponent implements OnInit {
     );
   }
 
+  toggleNotifications(): void {
+    this.showNotifications = !this.showNotifications;
+    console.log("showNotif", this.showNotifications);
+    console.log("notificationsAfter", this.notifications);
+  }
 
   logout() {
     this.authService.signOut()
