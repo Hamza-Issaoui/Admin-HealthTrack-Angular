@@ -1,11 +1,13 @@
 import { Component } from '@angular/core';
+import { HttpClient, HttpClientModule } from '@angular/common/http';
+import { FormsModule } from '@angular/forms';
+import { Router } from '@angular/router';
+
 import { IconDirective } from '@coreui/icons-angular';
 import { ContainerComponent, RowComponent, ColComponent, TextColorDirective, CardComponent, CardBodyComponent, FormDirective, InputGroupComponent, InputGroupTextDirective, FormControlDirective, ButtonDirective } from '@coreui/angular';
 import Swal from 'sweetalert2';
-import { Router } from '@angular/router';
+
 import { Register } from './register.interface';
-import { HttpClient, HttpClientModule } from '@angular/common/http';
-import { FormsModule } from '@angular/forms';
 import { AuthService } from 'src/app/shared/authGuard/auth.service';
 
 
@@ -17,11 +19,14 @@ import { AuthService } from 'src/app/shared/authGuard/auth.service';
     imports: [FormsModule, HttpClientModule, ContainerComponent, RowComponent, ColComponent, TextColorDirective, CardComponent, CardBodyComponent, FormDirective, InputGroupComponent, InputGroupTextDirective, IconDirective, FormControlDirective, ButtonDirective],
     providers: [HttpClient]
   })
+
 export class RegisterComponent {
   registerObj: Register;
+
   constructor(private authService: AuthService, private router: Router) {
     this.registerObj = new Register();
   }
+
   onRegister() {
     this.authService.register(this.registerObj).subscribe(
       (res: any) => {
