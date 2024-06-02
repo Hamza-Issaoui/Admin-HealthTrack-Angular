@@ -8,7 +8,7 @@ export const routes: Routes = [
     },
     children: [
       {
-        path: 'notification',
+        path: '',
         loadComponent: () => import('./notifications/notifications.component').then(m => m.NotificationsComponent),
         data: {
           title: 'List Notifications'
@@ -22,7 +22,7 @@ export const routes: Routes = [
         }
       },*/
       {
-        path: 'add-notif',
+        path: 'create',
         loadComponent: () => import('./add-notif/add-notif.component').then(m => m.AddNotifComponent),
         data: {
           title: 'Create'

@@ -3,7 +3,7 @@ import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { Router } from '@angular/router';
-import { NotificationService } from '../../../../shared/notifications.service';
+import { NotificationService } from '../notifications.service';
 import Swal from 'sweetalert2';
 
 
@@ -23,6 +23,7 @@ export class NotificationsComponent implements OnInit {
     private router: Router,
     private notifService: NotificationService,
   ) { }
+
   ngOnInit(): void {
     this.fetchNotifs();
    // this.subscribeToRealTimeNotifications();
@@ -90,14 +91,14 @@ export class NotificationsComponent implements OnInit {
 
 
   navigate(id: any, type: string): void {
-    this.router.navigate(['/notifs/update-notif', {
+    this.router.navigate(['admin/notifications/update-notif', {
       id: id,
       action: type
     }]);
   }
 
   goToCreateNotif(): void {
-    this.router.navigate(['/notifs/add-notif']);
+    this.router.navigate(['admin/notifications/create']);
   }
 
 }

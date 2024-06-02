@@ -8,22 +8,29 @@ export const routes: Routes = [
     },
     children: [
       {
-        path: 'users',
+        path: '',
         loadComponent: () => import('./table-users/table-users.component').then(m => m.TableUsersComponent),
         data: {
           title: 'Users'
         }
       },
       {
-        path: 'update-user',
+        path: ':id',
+        loadComponent: () => import('./user/user.component').then(m => m.UserComponent),
+        data: {
+          title: 'View'
+        }
+      },
+      {
+        path: 'update/:id',
         loadComponent: () => import('./user/user.component').then(m => m.UserComponent),
         data: {
           title: 'Update'
         }
       },
       {
-        path: 'add-user',
-        loadComponent: () => import('./add-user/add-user.component').then(m => m.AddUserComponent),
+        path: 'create',
+        loadComponent: () => import('./user/user.component').then(m => m.UserComponent),
         data: {
           title: 'Create'
         }

@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http'
 import { Injectable } from '@angular/core'
 import { Observable } from 'rxjs'
-import { env } from '../../environment/environment';
+import { env } from '../../../../environment/environment';
 
 @Injectable()
 export class UserService {
@@ -28,5 +28,4 @@ export class UserService {
     const url = `${this.path}/users/${id}`
     return this._httpClient.delete(url)
   }
-
 }

@@ -3,7 +3,7 @@ import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { Router } from '@angular/router';
-import { UserService } from '../../../../shared/users.service';
+import { UserService } from '../users.service';
 import Swal from 'sweetalert2';
 
 
@@ -87,14 +87,20 @@ export class TableUsersComponent implements OnInit {
 
 
   navigate(id: any, type: string): void {
-    this.router.navigate(['/users/update-user', {
-      id: id,
-      action: type
-    }]);
+    if (type == 'View') {
+      this.router.navigate([`admin/users/${id}`, {
+        action: type
+      }]);
+    } else if (type == "Edit") {
+      this.router.navigate([`admin/users/update/${id}`, {
+        action: type
+      }]);
+    }
   }
 
+
   goToCreateUser(): void {
-    this.router.navigate(['/users/add-user']);
+    this.router.navigateByUrl('admin/users/create');
   }
 
 }

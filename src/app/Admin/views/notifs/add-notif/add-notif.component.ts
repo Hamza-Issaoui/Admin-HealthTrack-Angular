@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import Swal from 'sweetalert2';
-import { NotificationService } from '../../../../shared/notifications.service';
+import { NotificationService } from '../notifications.service';
 import { Router } from '@angular/router';
 import { AddNotif } from './add-notif.interface';
 import { FormsModule } from '@angular/forms';
@@ -52,7 +52,7 @@ export class AddNotifComponent {
   }
 
   goToNotifs(): void {
-    this.router.navigate(['/notifs/notification']);
+    this.router.navigate(['admin/notifications']);
   }
 }
 
