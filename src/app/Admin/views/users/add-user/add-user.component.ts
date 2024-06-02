@@ -1,36 +1,36 @@
 import { Component } from '@angular/core';
 import Swal from 'sweetalert2';
-import { NotificationService } from '../../../shared/notifications.service';
+import { AuthService } from '../../../../shared/authGuard/auth.service';
 import { Router } from '@angular/router';
-import { AddNotif } from './add-notif.interface';
+import { AddUser } from './add-user.interface';
 import { FormsModule } from '@angular/forms';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 
 @Component({
-  selector: 'app-add-notif',
+  selector: 'app-add-user',
   standalone: true,
   imports: [FormsModule, HttpClientModule],
   providers: [HttpClient],
-  templateUrl: './add-notif.component.html',
-  styleUrl: './add-notif.component.css'
+  templateUrl: './add-user.component.html',
+  styleUrl: './add-user.component.css'
 })
-export class AddNotifComponent {
-  createNotifObj: AddNotif;
-  constructor(private notifService: NotificationService, private router: Router) {
-    this.createNotifObj = new AddNotif();
+export class AddUserComponent {
+  createUserObj: AddUser;
+  constructor(private authService: AuthService, private router: Router) {
+    this.createUserObj = new AddUser();
   }
-  onCreateNotif() {
-    this.notifService.createNotif(this.createNotifObj).subscribe(
+  onCreateUser() {
+    this.authService.register(this.createUserObj).subscribe(
       (res: any) => {
         if (res.status == 201) {
           Swal.fire({
             position: "center",
             icon: "success",
-            title: "Notification successfully created",
+            title: "Registration Success",
             showConfirmButton: false,
             timer: 1500
           }).then(() => {
-            this.router.navigateByUrl('/notifs/notification');
+            this.router.navigateByUrl('/users/users');
           });
         } else {
           Swal.fire({
@@ -51,8 +51,8 @@ export class AddNotifComponent {
     );
   }
 
-  goToNotifs(): void {
-    this.router.navigate(['/notifs/notification']);
+  goToUsers(): void {
+    this.router.navigate(['/users/users']);
   }
 }
 

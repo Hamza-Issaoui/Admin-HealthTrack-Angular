@@ -3,7 +3,7 @@ import { NavigationEnd, Router, RouterOutlet } from '@angular/router';
 import { Title } from '@angular/platform-browser';
 import { AuthService } from './shared/authGuard/auth.service';
 import { IconSetService } from '@coreui/icons-angular';
-import { iconSubset } from './icons/icon-subset';
+import { iconSubset } from './Admin/icons/icon-subset';
 import { HttpClientModule } from '@angular/common/http';
 import { UserService } from './shared/users.service';
 import { NotificationService } from './shared/notifications.service';

@@ -2,7 +2,7 @@ import { CommonModule } from '@angular/common';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { AuthService } from '../../../shared/authGuard/auth.service';
+import { AuthService } from '../../../../shared/authGuard/auth.service';
 import { Router } from '@angular/router';
 import Swal from 'sweetalert2';
 

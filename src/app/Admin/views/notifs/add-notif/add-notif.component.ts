@@ -1,36 +1,36 @@
 import { Component } from '@angular/core';
 import Swal from 'sweetalert2';
-import { AuthService } from '../../../shared/authGuard/auth.service';
+import { NotificationService } from '../../../../shared/notifications.service';
 import { Router } from '@angular/router';
-import { AddUser } from './add-user.interface';
+import { AddNotif } from './add-notif.interface';
 import { FormsModule } from '@angular/forms';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 
 @Component({
-  selector: 'app-add-user',
+  selector: 'app-add-notif',
   standalone: true,
   imports: [FormsModule, HttpClientModule],
   providers: [HttpClient],
-  templateUrl: './add-user.component.html',
-  styleUrl: './add-user.component.css'
+  templateUrl: './add-notif.component.html',
+  styleUrl: './add-notif.component.css'
 })
-export class AddUserComponent {
-  createUserObj: AddUser;
-  constructor(private authService: AuthService, private router: Router) {
-    this.createUserObj = new AddUser();
+export class AddNotifComponent {
+  createNotifObj: AddNotif;
+  constructor(private notifService: NotificationService, private router: Router) {
+    this.createNotifObj = new AddNotif();
   }
-  onCreateUser() {
-    this.authService.register(this.createUserObj).subscribe(
+  onCreateNotif() {
+    this.notifService.createNotif(this.createNotifObj).subscribe(
       (res: any) => {
         if (res.status == 201) {
           Swal.fire({
             position: "center",
             icon: "success",
-            title: "Registration Success",
+            title: "Notification successfully created",
             showConfirmButton: false,
             timer: 1500
           }).then(() => {
-            this.router.navigateByUrl('/users/users');
+            this.router.navigateByUrl('/notifs/notification');
           });
         } else {
           Swal.fire({
@@ -51,8 +51,8 @@ export class AddUserComponent {
     );
   }
 
-  goToUsers(): void {
-    this.router.navigate(['/users/users']);
+  goToNotifs(): void {
+    this.router.navigate(['/notifs/notification']);
   }
 }
 

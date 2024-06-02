@@ -3,7 +3,7 @@ import { Router, RouterLink, RouterLinkActive } from '@angular/router';
 import { AvatarComponent, BadgeComponent, BreadcrumbRouterComponent, ColorModeService, ContainerComponent, DropdownComponent, DropdownDividerDirective, DropdownHeaderDirective, DropdownItemDirective, DropdownMenuDirective, DropdownToggleDirective, HeaderComponent, HeaderNavComponent, HeaderTogglerDirective, NavItemComponent, NavLinkDirective, ProgressBarDirective, ProgressComponent, SidebarToggleDirective, TextColorDirective, ThemeDirective } from '@coreui/angular';
 import { NgStyle, NgTemplateOutlet } from '@angular/common';
 import { IconDirective } from '@coreui/icons-angular';
-import { WebSocketService } from '../../../shared/webSocket.service';
+import { WebSocketService } from '../../../../shared/webSocket.service';
 import { CommonModule } from '@angular/common';
 import { AuthService } from 'src/app/shared/authGuard/auth.service';
 

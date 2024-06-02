@@ -3,7 +3,7 @@ import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { Router } from '@angular/router';
-import { NotificationService } from '../../../shared/notifications.service';
+import { NotificationService } from '../../../../shared/notifications.service';
 import Swal from 'sweetalert2';
 
 
