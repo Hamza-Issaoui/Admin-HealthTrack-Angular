@@ -18,48 +18,15 @@ export const routes: Routes = [
     },
     children: [
       {
-        path: 'dashboard',
+        path: 'admin/home',
         loadChildren: () => import('./Admin/views/dashboard/routes').then((m) => m.routes)
       },
-     
       {
-        path: 'base',
-        loadChildren: () => import('./Admin/views/base/routes').then((m) => m.routes)
+        path: 'admin/users',
+        loadChildren: () => import('./Admin/views/users/users.routes').then((m) => m.routes)
       },
       {
-        path: 'buttons',
-        loadChildren: () => import('./Admin/views/buttons/routes').then((m) => m.routes)
-      },
-      {
-        path: 'forms',
-        loadChildren: () => import('./Admin/views/forms/routes').then((m) => m.routes)
-      },
-      {
-        path: 'icons',
-        loadChildren: () => import('./Admin/views/icons/routes').then((m) => m.routes)
-      },
-      {
-        path: 'notifications',
-        loadChildren: () => import('./Admin/views/notifications/routes').then((m) => m.routes)
-      },
-      {
-        path: 'widgets',
-        loadChildren: () => import('./Admin/views/widgets/routes').then((m) => m.routes)
-      },
-      {
-        path: 'charts',
-        loadChildren: () => import('./Admin/views/charts/routes').then((m) => m.routes)
-      },
-      {
-        path: 'pages',
-        loadChildren: () => import('./Admin/views/pages/routes').then((m) => m.routes)
-      },
-      {
-        path: 'users',
-        loadChildren: () => import('./Admin/views/users/routes').then((m) => m.routes)
-      },
-      {
-        path: 'notifs',
+        path: 'admin/notifications',
         loadChildren: () => import('./Admin/views/notifs/routes').then((m) => m.routes)
       },
     ]
@@ -113,5 +80,5 @@ export const routes: Routes = [
       title: 'Home Page'
     }
   },
-  { path: '**', redirectTo: 'dashboard' }
+  { path: '**', redirectTo: '404' }
 ];

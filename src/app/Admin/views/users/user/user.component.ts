@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { UserService } from '../../../../shared/users.service';
+import { UserService } from '../users.service';
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import Swal from 'sweetalert2';
@@ -30,9 +30,6 @@ export class UserComponent implements OnInit {
 
       this.userService.getOneUser(this.userId).subscribe((data) => {
         this.user = data;
-        console.log("user", data);
-        
-
       })
     });
   }
@@ -52,7 +49,7 @@ export class UserComponent implements OnInit {
           showConfirmButton: false,
           timer: 1500
         });
-        this.router.navigateByUrl('/users/users');
+        this.router.navigateByUrl('admin/users');
       },
       (error) => {
         Swal.fire({
@@ -66,6 +63,6 @@ export class UserComponent implements OnInit {
     );
   }
   goToUsers(): void {
-    this.router.navigate(['/users/users']);
+    this.router.navigate(['admin/users']);
   }
 }

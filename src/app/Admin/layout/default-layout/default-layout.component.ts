@@ -15,7 +15,7 @@ import {
   SidebarTogglerDirective
 } from '@coreui/angular';
 
-import { DefaultFooterComponent, DefaultHeaderComponent } from './';
+import { DefaultHeaderComponent } from './';
 import { navItems } from './_nav';
 
 function isOverflown(element: HTMLElement) {
@@ -45,7 +45,6 @@ function isOverflown(element: HTMLElement) {
     ShadowOnScrollDirective,
     ContainerComponent,
     RouterOutlet,
-    DefaultFooterComponent
   ]
 })
 export class DefaultLayoutComponent {

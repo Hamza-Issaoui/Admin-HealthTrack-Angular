@@ -1,24 +1,13 @@
 <!--<c-header class="mb-4 d-print-none" position="sticky">-->
 <ng-container>
   <c-container [fluid]="true" class="border-bottom px-4">
-    <button
-      [cSidebarToggle]="sidebarId"
-      cHeaderToggler
-      class="btn"
-      toggle="visible"
-      style="margin-inline-start: -14px;"
-    >
+    <button [cSidebarToggle]="sidebarId" cHeaderToggler class="btn" toggle="visible"
+      style="margin-inline-start: -14px;">
       <svg cIcon name="cilMenu" size="lg"></svg>
     </button>
     <c-header-nav class="d-none d-md-flex">
       <c-nav-item>
         <a cNavLink routerLink="/dashboard" routerLinkActive="active">Dashboard</a>
-      </c-nav-item>
-      <c-nav-item>
-        <a cNavLink routerLink="/users" routerLinkActive="active">Users</a>
-      </c-nav-item>
-      <c-nav-item>
-        <a cNavLink routerLink="/settings" routerLinkActive="active">Settings</a>
       </c-nav-item>
     </c-header-nav>
 
@@ -27,23 +16,33 @@
         <svg cIcon class="my-1" name="cilBell" size="lg"></svg>
         <span *ngIf="!showNotifications && notifications.length > 0" class="badge">{{ notifications.length }}</span>
       </a>
-      <a cNavLink>
-        <svg cIcon class="my-1" name="cilList" size="lg"></svg>
-      </a>
-      <a cNavLink>
-        <svg cIcon class="my-1" name="cilEnvelopeOpen" size="lg"></svg>
-      </a>
     </c-header-nav>
-    
-    <div *ngIf="showNotifications && notifications.length > 0" class="notification-list">
-      <div *ngFor="let notification of notifications" class="notification-item">
-        <div class="notification-header">
-          <span class="notification-name">{{ notification.name }}</span>
-          <span class="notification-time">{{ notification.createdAt | date: 'short' }}</span>
+
+    <div *ngIf="showNotifications" class="notification-list">
+      @for (notification of notifications; track notification.name) {
+        <div  class="notification-item">
+          <div class="bg-body-secondary px-1">
+            <h3> Notifications </h3>
+          </div>
+          <div class="notification-header">
+            <span class="notification-name">{{ notification.name }}</span>
+            <span class="notification-time">{{ notification.createdAt | date: 'short' }}</span>
+          </div>
+          <div class="notification-description">{{ notification.description }}</div>
         </div>
-        <div class="notification-description">{{ notification.description }}</div>
+      } @empty {
+        <div  class="notification-item">
+          <div class="bg-body-secondary px-1">
+            <h3> Notifications </h3>
+          </div>
+          <div class="notification-header">
+            <span class="notification-name"> No notifications  </span>
+          </div>
+          <div class="notification-description">When you have notifications, they will appear here.</div>
+        </div>
+      }
       </div>
-    </div>
+
 
     <c-header-nav class="ms-auto ms-md-0">
       <div class="nav-item py-1">
@@ -69,13 +68,8 @@
 <ng-template #userDropdown>
   <c-dropdown [popperOptions]="{ placement: 'bottom-start' }" variant="nav-item">
     <button [caret]="false" cDropdownToggle class="py-0 pe-0">
-      <c-avatar
-        shape="rounded-1"
-        [size]="'md'"
-        src="./assets/images/avatars/8.jpg"
-        status="success"
-        textColor="primary"
-      />
+      <c-avatar shape="rounded-1" [size]="'md'" src="./assets/images/avatars/8.jpg" status="success"
+        textColor="primary" />
     </button>
     <ul cDropdownMenu class="pt-0 w-auto">
       <li>
@@ -83,42 +77,6 @@
           Account
         </h6>
       </li>
-      <li>
-        <a cDropdownItem routerLink="">
-          <svg cIcon class="me-2" name="cilBell"></svg>
-          Updates
-          <c-badge class="ms-2 float-end" color="info"> 42</c-badge>
-        </a>
-      </li>
-      <li>
-        <a cDropdownItem routerLink="/apps/email/inbox">
-          <svg cIcon class="me-2" name="cilEnvelopeOpen"></svg>
-          Messages
-          <c-badge class="ms-2 float-end" color="success">
-            42
-          </c-badge>
-        </a>
-      </li>
-      <li>
-        <a cDropdownItem routerLink="">
-          <svg cIcon class="me-2" name="cilTask"></svg>
-          Tasks
-          <c-badge class="ms-2 float-end" color="danger"> 42</c-badge>
-        </a>
-      </li>
-      <li>
-        <a cDropdownItem routerLink="">
-          <svg cIcon class="me-2" name="cilCommentSquare"></svg>
-          Comments
-          <c-badge class="ms-auto" color="warning"> 42</c-badge>
-        </a>
-      </li>
-      <li>
-        <h6 cDropdownHeader class="bg-body-secondary text-body-secondary fw-semibold py-2">
-          Settings
-        </h6>
-      </li>
-      <li></li>
       <li>
         <a cDropdownItem routerLink="">
           <svg cIcon class="me-2" name="cilUser"></svg>
@@ -132,31 +90,7 @@
         </a>
       </li>
       <li>
-        <a cDropdownItem routerLink="">
-          <svg cIcon class="me-2" name="cilCreditCard"></svg>
-          Payments
-          <c-badge class="ms-2 float-end" color="secondary">
-            42
-          </c-badge>
-        </a>
-      </li>
-      <li>
-        <a cDropdownItem routerLink="">
-          <svg cIcon class="me-2" name="cilFile"></svg>
-          Projects
-          <c-badge class="ms-2 float-end" color="primary">
-            42
-          </c-badge>
-        </a>
-      </li>
-      <li>
         <hr cDropdownDivider />
-      </li>
-      <li>
-        <a cDropdownItem routerLink="">
-          <svg cIcon class="me-2" name="cilLockLocked"></svg>
-          Lock Account
-        </a>
       </li>
       <li>
         <a cDropdownItem routerLink="" (click)="logout()">
@@ -175,16 +109,11 @@
     </button>
     <div cDropdownMenu>
       @for (mode of colorModes; track mode.name) {
-        <button
-          (click)="colorMode.set(mode.name)"
-          [active]="colorMode()===mode.name"
-          [routerLink]="[]"
-          cDropdownItem
-          class="d-flex align-items-center"
-        >
-          <svg cIcon class="me-2" [name]="mode.icon" size="lg"></svg>
-          {{ mode.text }}
-        </button>
+      <button (click)="colorMode.set(mode.name)" [active]="colorMode()===mode.name" [routerLink]="[]" cDropdownItem
+        class="d-flex align-items-center">
+        <svg cIcon class="me-2" [name]="mode.icon" size="lg"></svg>
+        {{ mode.text }}
+      </button>
       }
     </div>
   </c-dropdown>

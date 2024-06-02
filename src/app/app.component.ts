@@ -5,8 +5,8 @@ import { AuthService } from './shared/authGuard/auth.service';
 import { IconSetService } from '@coreui/icons-angular';
 import { iconSubset } from './Admin/icons/icon-subset';
 import { HttpClientModule } from '@angular/common/http';
-import { UserService } from './shared/users.service';
-import { NotificationService } from './shared/notifications.service';
+import { UserService } from './Admin/views/users/users.service';
+import { NotificationService } from './Admin/views/notifs/notifications.service';
 
 @Component({
   selector: 'app-root',
