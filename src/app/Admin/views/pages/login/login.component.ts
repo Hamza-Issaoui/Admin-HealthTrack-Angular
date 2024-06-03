@@ -35,7 +35,7 @@ export class LoginComponent {
             showConfirmButton: false,
             timer: 1500
           }).then(() => {
-            this.router.navigateByUrl('/dashboard');
+            this.router.navigateByUrl('/admin/home');
           });
         } else {
           Swal.fire({
