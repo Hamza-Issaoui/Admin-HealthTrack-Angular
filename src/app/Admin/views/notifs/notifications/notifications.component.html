@@ -5,16 +5,16 @@
     <table class="table table-striped">
       <thead>
         <tr>
-          <th>Name</th>
-          <th>Description</th>
+          <th>Title</th>
+          <th>Message</th>
           <th>Action</th>
         </tr>
       </thead>
       <tbody>
         @for (notif of notifs; track notif.id) {
         <tr>
-          <td>{{ notif.name }}</td>
-          <td>{{ notif.description }}</td>
+          <td>{{ notif.title }}</td>
+          <td>{{ notif.message }}</td>
           <td>
             <i class="fa-solid fa-eye" (click)="navigate(notif._id, 'View')"></i>
             <i class="fa-regular fa-pen-to-square" style="cursor: pointer;" (click)="navigate(notif._id, 'Edit')"></i>

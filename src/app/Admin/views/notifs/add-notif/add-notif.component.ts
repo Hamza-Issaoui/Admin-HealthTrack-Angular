@@ -30,7 +30,7 @@ export class AddNotifComponent {
             showConfirmButton: false,
             timer: 1500
           }).then(() => {
-            this.router.navigateByUrl('/notifs/notification');
+            this.router.navigateByUrl('/admin/notifications');
           });
         } else {
           Swal.fire({
@@ -51,8 +51,5 @@ export class AddNotifComponent {
     );
   }
 
-  goToNotifs(): void {
-    this.router.navigate(['admin/notifications']);
-  }
 }
 

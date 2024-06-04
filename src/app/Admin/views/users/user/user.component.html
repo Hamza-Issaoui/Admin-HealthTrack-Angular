@@ -13,7 +13,61 @@
                   @if (action == 'Edit') {
                     <p class="text-center h1 fw-bold mb-5 mx-1 mx-md-4 mt-4">Update User</p>
                     }
+                    @if (action == 'Create') {
+                      <p class="text-center h1 fw-bold mb-5 mx-1 mx-md-4 mt-4">Create User</p>
+                      }
               <form>
+                @if (action == 'Create') {
+                  <div class="row">
+                    <div class="col-md-6 mb-4">
+                      <div data-mdb-input-init class="form-outline">
+                        <label class="form-label" for="firstname">First Name</label>
+                        <input type="text" id="firstname" name="firstname" class="form-control form-control-lg" [(ngModel)]="createUserObj.firstname" />
+                      </div>
+                    </div>
+                    <div class="col-md-6 mb-4">
+                      <div data-mdb-input-init class="form-outline">
+                        <label class="form-label" for="lastname">Last Name</label>
+                        <input type="text" id="lastname" name="lastname" class="form-control form-control-lg" [(ngModel)]="createUserObj.lastname" />
+                      </div>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="col-md-6 mb-4 pb-2">
+                      <div data-mdb-input-init class="form-outline">
+                        <label class="form-label" for="emailAddress">Email</label>
+                        <input type="email" id="emailAddress" name="emailAddress" class="form-control form-control-lg" [(ngModel)]="createUserObj.email" />
+                      </div>
+                    </div>
+                    <div class="col-md-6 mb-4 pb-2">
+                      <div data-mdb-input-init class="form-outline">
+                        <label class="form-label" for="phone">Phone Number</label>
+                        <input type="tel" id="phone" name="phone" class="form-control form-control-lg" [(ngModel)]="createUserObj.phone" />
+                      </div>
+                    </div>
+                  </div><div class="row">
+                    <div class="col-md-6 mb-4">
+                      <div data-mdb-input-init class="form-outline">
+                        <label class="form-label" for="firstname">Role</label>
+                        <div class="col-12">
+                          <select class="select form-control-lg" name="role" [(ngModel)]="createUserObj.role">
+                            <option value="1" disabled>Choose option</option>
+                            <option value="admin">Admin</option>
+                            <option value="client">Client</option>
+                            <option value="coach">Coach</option>
+                          </select>
+                        </div>                    
+                        </div>
+                    </div>
+                    <div class="col-md-6 mb-4">
+                      <div data-mdb-input-init class="form-outline">
+                        <label class="form-label" for="lastname">Password</label>
+                        <input type="tel" id="password" name="password" class="form-control form-control-lg" [(ngModel)]="createUserObj.password" name="password" />
+                      </div>
+                    </div>
+                  </div>
+                  }
+                  @if (action == 'Edit') {
                 <div class="row">
                   <div class="col-md-6 mb-4">
                     <div data-mdb-input-init class="form-outline">
@@ -41,6 +95,7 @@
                       <input [disabled]='action == "Edit" ? false : true' type="tel" id="phone" name="phone" class="form-control form-control-lg" [(ngModel)]="user.phone" />
                     </div>
                   </div>
+
                   @if (action == 'View') {
                   <div class="col-md-6 mb-4 pb-2">
                     <div data-mdb-input-init class="form-outline">
@@ -50,6 +105,46 @@
                   </div>
                 }
                 </div>
+              }
+              @if (action == 'View') {
+                <div class="row">
+                  <div class="col-md-6 mb-4">
+                    <div data-mdb-input-init class="form-outline">
+                      <label class="form-label" for="firstname">First Name</label>
+                      <input [disabled]='action == "Edit" ? false : true' type="text" id="firstname" name="firstname" class="form-control form-control-lg" [(ngModel)]="user.firstname" />
+                    </div>
+                  </div>
+                  <div class="col-md-6 mb-4">
+                    <div data-mdb-input-init class="form-outline">
+                      <label class="form-label" for="lastname">Last Name</label>
+                      <input [disabled]='action == "Edit" ? false : true' type="text" id="lastname" name="lastname" class="form-control form-control-lg" [(ngModel)]="user.lastname" />
+                    </div>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-md-6 mb-4 pb-2">
+                    <div data-mdb-input-init class="form-outline">
+                      <label class="form-label" for="emailAddress">Email</label>
+                      <input [disabled]='action == "Edit" ? false : true' type="email" id="emailAddress" name="emailAddress" class="form-control form-control-lg" [(ngModel)]="user.email" />
+                    </div>
+                  </div>
+                  <div class="col-md-6 mb-4 pb-2">
+                    <div data-mdb-input-init class="form-outline">
+                      <label class="form-label" for="phone">Phone Number</label>
+                      <input [disabled]='action == "Edit" ? false : true' type="tel" id="phone" name="phone" class="form-control form-control-lg" [(ngModel)]="user.phone" />
+                    </div>
+                  </div>
+
+                  @if (action == 'View') {
+                  <div class="col-md-6 mb-4 pb-2">
+                    <div data-mdb-input-init class="form-outline">
+                      <label class="form-label" for="role">Role</label>
+                      <input [disabled]='action == "Edit" ? false : true' type="tel" id="role" name="role" class="form-control form-control-lg" [(ngModel)]="user.role" />
+                    </div>
+                  </div>
+                }
+                </div>
+              }
                 @if (action == 'Edit') {
                   <div class="row">
                     <label class="form-label select-label">Role</label>
@@ -68,10 +163,13 @@
                   <input data-mdb-button-init data-mdb-ripple-init class="btn btn-primary btn-lg" type="submit" value="Update" (click)="updateUser()"/>
                 }
                 </div>
-              
+                <div class="mt-4 pt-2 d-flex justify-content-between">
+                  @if (action == 'Create') {
+                  <input data-mdb-button-init data-mdb-ripple-init class="btn btn-primary btn-lg" type="submit" value="Create" (click)="onCreateUser()"/>
+                }
+                </div>
               </form>
             </div>
-            
           </div>
         </div>
       </div>

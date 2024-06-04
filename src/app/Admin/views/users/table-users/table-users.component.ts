@@ -96,11 +96,16 @@ export class TableUsersComponent implements OnInit {
         action: type
       }]);
     }
+    else if (type == "Create") {
+      this.router.navigate(['admin/users/create', {
+        action: type
+      }]);
+    }
   }
 
 
   goToCreateUser(): void {
-    this.router.navigateByUrl('admin/users/create');
+    this.router.navigate(['admin/users/create', { action: 'Create' }]);
   }
 
 }

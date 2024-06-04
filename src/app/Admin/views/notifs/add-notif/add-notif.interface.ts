@@ -1,10 +1,10 @@
 export class AddNotif {
-    name: string;
-    description: string;
+    title: string;
+    message: string;
    
 
     constructor() {
-        this.name = '';
-        this.description = '';
+        this.title = '';
+        this.message = '';
     }
 }

@@ -9,6 +9,11 @@ export class UserService {
 
   constructor(private _httpClient: HttpClient) { }
 
+  createUser(userData: any) {
+    const url = `${this.path}/users`
+    return this._httpClient.post(url, userData)
+  }
+
   getOneUser(id: string) {
     const url = `${this.path}/users/${id}`
     return this._httpClient.get(url)
