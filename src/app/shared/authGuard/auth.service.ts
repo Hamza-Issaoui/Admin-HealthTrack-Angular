@@ -26,8 +26,8 @@ export class AuthService {
       .pipe(
         tap((res: any) => {
           if (res.success) {
-            this.storeToken(res.token);
-            this.authToken = res.token
+            this.storeToken(res.accessToken);
+            this.authToken = res.accessToken
           }
         }),
         catchError((error) => {

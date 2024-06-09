@@ -25,10 +25,10 @@
             <h3> Notifications </h3>
           </div>
           <div class="notification-header">
-            <span class="notification-name">{{ notification.name }}</span>
+            <span class="notification-name">{{ notification.title }}</span>
             <span class="notification-time">{{ notification.createdAt | date: 'short' }}</span>
           </div>
-          <div class="notification-description">{{ notification.description }}</div>
+          <div class="notification-description">{{ notification.message }}</div>
         </div>
       } @empty {
         <div  class="notification-item">
